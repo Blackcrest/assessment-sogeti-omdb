@@ -48,63 +48,67 @@ export const SearchResults = (props: SearchResultProps) => {
           updateSearchResults([])
         }}
       />
-      <Heading el="h1" size="xxxl">
-        Search Results
-      </Heading>
-      {results.map((r: MovieDetail, index) => {
-        if (r.Response === 'False') {
-          return
-        }
+      <div className="search-result__header">
+        <Heading el="h1" size="xxxl">
+          Search Results
+        </Heading>
+      </div>
+      <div className="search-result__list">
+        {results.map((r: MovieDetail, index) => {
+          if (r.Response === 'False') {
+            return
+          }
 
-        return (
-          <div className="search-result__item" key={`${r.imdbID}-${index}`}>
-            <div className="search-result__image">
-              <img src={r.Poster} alt={r.Title} />
+          return (
+            <div className="search-result__item" key={`${r.imdbID}-${index}`}>
+              <div className="search-result__image">
+                <img src={r.Poster} alt={r.Title} />
+              </div>
+              <div className="search-result__details">
+                <div className="search-result__heading">
+                  <Heading el="h2" size="xxl">
+                    {r.Title} ({r.Year})
+                  </Heading>
+                  <span className="search-result__rated">Rated: {r.Rated}</span>
+                </div>
+                <div className="search-result__genres">
+                  {renderGenres(r.Genre)}
+                </div>
+                <table className="search-result__table">
+                  <tbody>
+                    <tr>
+                      <td>Director</td>
+                      <td>{r.Director}</td>
+                    </tr>
+                    <tr>
+                      <td>Actors</td>
+                      <td>
+                        {r.Actors.indexOf(',') >= 0 &&
+                          r.Actors.split(',').map((actor, aIndex) => (
+                            <>
+                              <span key={`${actor}-${aIndex}`}>{actor}</span>
+                              {aIndex !== r.Actors.split(',').length - 1 && (
+                                <span className="dot"></span>
+                              )}
+                            </>
+                          ))}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Awards</td>
+                      <td>{r.Awards}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div>
+                  <Heading el="h6">Plot description</Heading>
+                  <ReadMore text={r.Plot} borderless={true} />
+                </div>
+              </div>
             </div>
-            <div className="search-result__details">
-              <div className="search-result__heading">
-                <Heading el="h2" size="xxl">
-                  {r.Title} ({r.Year})
-                </Heading>
-                <span className="search-result__rated">Rated: {r.Rated}</span>
-              </div>
-              <div className="search-result__genres">
-                {renderGenres(r.Genre)}
-              </div>
-              <table className="search-result__table">
-                <tbody>
-                  <tr>
-                    <td>Director</td>
-                    <td>{r.Director}</td>
-                  </tr>
-                  <tr>
-                    <td>Actors</td>
-                    <td>
-                      {r.Actors.indexOf(',') >= 0 &&
-                        r.Actors.split(',').map((actor, aIndex) => (
-                          <>
-                            <span key={`${actor}-${aIndex}`}>{actor}</span>
-                            {aIndex !== r.Actors.split(',').length - 1 && (
-                              <span className="dot"></span>
-                            )}
-                          </>
-                        ))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Awards</td>
-                    <td>{r.Awards}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div>
-                <Heading el="h6">Plot description</Heading>
-                <ReadMore text={r.Plot} borderless={true} />
-              </div>
-            </div>
-          </div>
-        )
-      })}
+          )
+        })}
+      </div>
     </div>
   )
 }

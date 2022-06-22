@@ -4,6 +4,7 @@
   line-height: map-get($font-sizes, 'md');
   width: max-content;
   border-radius: 50px;
+  border: none;
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s ease;

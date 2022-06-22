@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 
 import { MovieDetail } from "../models/movieDetail"
-import { FeaturedFilm } from "./FeaturedFilm"
+import { FeaturedMovie } from "./FeaturedMovie"
+import { Heading } from "./Heading"
 
 export const FeaturePage = () => {
   const [features, setFeatured] = useState<MovieDetail[]>([])
@@ -31,15 +32,18 @@ export const FeaturePage = () => {
     fetchFeatures()
   }, [])
 
-  if (features.length === 0) {
-    return <div>Loading!</div>
-  }
-
   return (
     <div className="featured">
-      {features.map((feature: MovieDetail) => {
-        return <FeaturedFilm key={feature.imdbID} data={feature} />
-      })}
+      <div className="featured__title">
+        <Heading el="h1" size="xxl">
+          Featured Movies
+        </Heading>
+      </div>
+      <div className="featured__content">
+        {features.map((feature: MovieDetail) => {
+          return <FeaturedMovie key={feature.imdbID} data={feature} />
+        })}
+      </div>
     </div>
   )
 }

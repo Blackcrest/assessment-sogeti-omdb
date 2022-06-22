@@ -5,17 +5,23 @@ $search-bar-height: 46px;
   background: $bg-light;
   color: $white;
   position: fixed;
-  width: 100vw;
+  width: 100%;
   z-index: 300;
   height: $header-height;
   box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
     rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
+  @include respond(big-desktop) {
+    height: 130px;
+  }
+
   form {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    padding: 0 map-get($spacers, 3);
   }
 
   &__search-bar {
@@ -46,10 +52,10 @@ $search-bar-height: 46px;
   }
 
   &__search-button {
-    padding: map-get($spacers, 2);
     border-radius: 50px;
     border: none;
-    font-size: map-get($font-sizes, 'lg');
+    font-size: map-get($font-sizes, 'md');
+    line-height: $search-bar-height;
     font-weight: 600;
     background-color: $primary-color;
     color: $white;
@@ -74,6 +80,7 @@ $search-bar-height: 46px;
     align-items: center;
     justify-content: flex-end;
     padding-right: map-get($spacers, 3);
+    margin-left: calc(#{map-get($spacers, 3)} * -1);
 
     label {
       margin-right: map-get($spacers, 2);

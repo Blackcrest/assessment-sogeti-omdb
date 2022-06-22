@@ -5,4 +5,9 @@
   border-radius: 30px;
   font-size: map-get($font-sizes, 'sm');
   line-height: map-get($font-sizes, 'sm');
+
+  @include respond(phone) {
+    font-size: map-get($font-sizes, 'md');
+    line-height: map-get($font-sizes, 'md');
+  }
 }
