@@ -1,15 +1,35 @@
 .read-more {
-  border: 1px solid $white;
+  border: 1px solid $primary-color-light;
   padding: $spacer;
-  border-radius: 8px;
+  border-radius: $default-border-radius;
   max-height: 600px;
+  position: relative;
 
   &[data-has-button='true'] {
     position: relative;
+
+    &:before {
+      content: '';
+      width: 100%;
+      height: 60px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      border-radius: $default-border-radius;
+      background: linear-gradient(
+        0deg,
+        rgba(6, 20, 31, 1) 0%,
+        rgba(6, 20, 31, 0) 100%
+      );
+    }
   }
 
   &[data-is-open='true'] {
     padding-bottom: map-get($spacers, 2);
+
+    &:before {
+      display: none;
+    }
   }
 
   &--borderless {
@@ -18,7 +38,11 @@
     padding: $spacer 0;
 
     &[data-has-button='true'] {
-      border-bottom: 1px solid grey;
+      border-bottom: 1px solid $primary-color-light;
+    }
+
+    &[data-is-open='true'] {
+      border: none;
     }
   }
 
@@ -33,7 +57,7 @@
     font-size: map-get($font-sizes, sm);
     padding: 0.4rem $spacer;
     border-radius: 30px;
-    border: 1px solid $white;
+    border: 1px solid $primary-color-light;
     cursor: pointer;
   }
 }

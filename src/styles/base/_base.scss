@@ -52,3 +52,16 @@ body {
   padding-top: $header-height;
   padding-bottom: map-get($spacers, 6);
 }
+
+.dot {
+  padding: $spacer;
+  position: relative;
+
+  &:before {
+    content: '.';
+    font-size: map-get($font-sizes, 'md');
+    font-weight: 600;
+    position: absolute;
+    top: 0;
+  }
+}

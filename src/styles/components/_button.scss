@@ -1,0 +1,29 @@
+.button {
+  padding: map-get($spacers, 2);
+  font-size: map-get($font-sizes, 'md');
+  line-height: map-get($font-sizes, 'md');
+  width: max-content;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &[data-appereance='primary'] {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  &[data-appereance='secondary'] {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  &[data-appereance='tertiary'] {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  &:hover {
+    background-color: darken($primary-color, 10);
+  }
+}

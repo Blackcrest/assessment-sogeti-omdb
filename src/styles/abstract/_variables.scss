@@ -1,15 +1,24 @@
 /* COLORS */
 $bg-dark: #06141f;
-$bg-light: #742c14;
+$bg-light: #6e4200;
 
-$primary-color: #3d4f7d;
+$primary-color: #0a416b;
+$primary-color-light: lighten($primary-color, 10);
+$primary-color-dark: darken($primary-color, 20);
+
 $secondary-color: #cd4f37;
+$secondary-color-light: lighten($secondary-color, 10);
+$secondary-color-dark: darken($secondary-color, 20);
+
 $tertiary-color: #ead890;
+$tertiary-color-light: lighten($tertiary-color, 10);
+$tertiary-color-dark: darken($tertiary-color, 20);
 
 $main-font-color: #333333;
 
 $white: #ffffff;
 $black: #000000;
+$gray: #899499;
 
 /* FONTS */
 $header-font: 'Roboto Condensed', sans-serif;
@@ -21,6 +30,9 @@ $spacer: 0.8rem;
 
 /* Heights and Widths */
 $header-height: 115px;
+
+/* Border */
+$default-border-radius: 8px;
 
 /* reponsive breakpoints */
 $bp-largest: 75em; // 1200px

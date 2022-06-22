@@ -12,7 +12,7 @@
   }
 
   &__awards {
-    color: gray;
+    color: $gray;
     font-size: map-get($font-sizes, sm);
     margin-bottom: map-get($spacers, 3);
   }

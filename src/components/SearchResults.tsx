@@ -1,6 +1,8 @@
 import { stringToArray } from "../helpers/stringHelper"
+import { useGlobalState } from "../hooks/useGlobalState"
 import { MovieDetail } from "../models/movieDetail"
 import { Badge } from "./Badge"
+import { Button } from "./Button"
 import { Heading } from "./Heading"
 import { ReadMore } from "./ReadMore"
 
@@ -9,6 +11,8 @@ export interface SearchResultProps {
 }
 
 export const SearchResults = (props: SearchResultProps) => {
+  const { updateSearchResults } = useGlobalState()
+
   const { results } = props
 
   const renderGenres = (genreString: string | undefined) => {
@@ -17,11 +21,33 @@ export const SearchResults = (props: SearchResultProps) => {
 
     const genreArray = genreString.split(',')
 
-    return genreArray.map((genre, index) => <Badge name={genre} />)
+    return genreArray.map((genre, index) => <Badge key={index} name={genre} />)
   }
+
+  if (results.length === 0)
+    return (
+      <div className="search-result">
+        <div className="search-result__no-results">
+          <Heading el="h1" size="xxxl">
+            We lost some movies...
+          </Heading>
+          <Heading el="h2" size="xl">
+            Sorry, it seems a few gremlins stole your movies. Try another title
+            of a movie you wish to find...
+          </Heading>
+        </div>
+      </div>
+    )
 
   return (
     <div className="search-result">
+      <Button
+        appereance="primary"
+        text="Back to Home"
+        onClick={() => {
+          updateSearchResults([])
+        }}
+      />
       <Heading el="h1" size="xxxl">
         Search Results
       </Heading>
@@ -40,12 +66,12 @@ export const SearchResults = (props: SearchResultProps) => {
                 <Heading el="h2" size="xxl">
                   {r.Title} ({r.Year})
                 </Heading>
+                <span className="search-result__rated">Rated: {r.Rated}</span>
               </div>
-              <div>Rated: {r.Rated}</div>
               <div className="search-result__genres">
                 {renderGenres(r.Genre)}
               </div>
-              <table>
+              <table className="search-result__table">
                 <tbody>
                   <tr>
                     <td>Director</td>
@@ -56,7 +82,12 @@ export const SearchResults = (props: SearchResultProps) => {
                     <td>
                       {r.Actors.indexOf(',') >= 0 &&
                         r.Actors.split(',').map((actor, aIndex) => (
-                          <span key={`${actor}-${aIndex}`}>{actor}</span>
+                          <>
+                            <span key={`${actor}-${aIndex}`}>{actor}</span>
+                            {aIndex !== r.Actors.split(',').length - 1 && (
+                              <span className="dot"></span>
+                            )}
+                          </>
                         ))}
                     </td>
                   </tr>
