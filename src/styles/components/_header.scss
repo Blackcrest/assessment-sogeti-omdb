@@ -118,4 +118,9 @@ $search-bar-height: 46px;
       }
     }
   }
+  .container {
+    @include respond(big-desktop) {
+      max-width: 50vw;
+    }
+  }
 }

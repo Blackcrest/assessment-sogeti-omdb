@@ -1,9 +1,9 @@
-import { stringToArray } from "../helpers/stringHelper"
 import { useGlobalState } from "../hooks/useGlobalState"
 import { MovieDetail } from "../models/movieDetail"
 import { Badge } from "./Badge"
 import { Button } from "./Button"
 import { Heading } from "./Heading"
+import { Movie } from "./Movie"
 import { ReadMore } from "./ReadMore"
 
 export interface SearchResultProps {
@@ -54,59 +54,12 @@ export const SearchResults = (props: SearchResultProps) => {
         </Heading>
       </div>
       <div className="search-result__list">
-        {results.map((r: MovieDetail, index) => {
+        {results.map((r: MovieDetail) => {
           if (r.Response === 'False') {
             return
           }
 
-          return (
-            <div className="search-result__item" key={`${r.imdbID}-${index}`}>
-              <div className="search-result__image">
-                <img src={r.Poster} alt={r.Title} />
-              </div>
-              <div className="search-result__details">
-                <div className="search-result__heading">
-                  <Heading el="h2" size="xxl">
-                    {r.Title} ({r.Year})
-                  </Heading>
-                  <span className="search-result__rated">Rated: {r.Rated}</span>
-                </div>
-                <div className="search-result__genres">
-                  {renderGenres(r.Genre)}
-                </div>
-                <table className="search-result__table">
-                  <tbody>
-                    <tr>
-                      <td>Director</td>
-                      <td>{r.Director}</td>
-                    </tr>
-                    <tr>
-                      <td>Actors</td>
-                      <td>
-                        {r.Actors.indexOf(',') >= 0 &&
-                          r.Actors.split(',').map((actor, aIndex) => (
-                            <>
-                              <span key={`${actor}-${aIndex}`}>{actor}</span>
-                              {aIndex !== r.Actors.split(',').length - 1 && (
-                                <span className="dot"></span>
-                              )}
-                            </>
-                          ))}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Awards</td>
-                      <td>{r.Awards}</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div>
-                  <Heading el="h6">Plot description</Heading>
-                  <ReadMore text={r.Plot} borderless={true} />
-                </div>
-              </div>
-            </div>
-          )
+          return <Movie detail={r} key={r.imdbID} />
         })}
       </div>
     </div>

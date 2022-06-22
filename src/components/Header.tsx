@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 import { useGlobalState } from "../hooks/useGlobalState"
-import { SearchResult, SearchResultMovie } from "../models/searchReponse"
+import { SearchResultMovie } from "../models/searchReponse"
 
 export const Header = () => {
   const { updateSearchResults } = useGlobalState()
@@ -16,7 +16,6 @@ export const Header = () => {
     })
       .then((reponse) => reponse.json())
       .then((data: SearchResultMovie[]) => {
-        console.log(data)
         const promises: any[] = []
         data.map((d: SearchResultMovie) =>
           promises.push(
@@ -30,13 +29,11 @@ export const Header = () => {
             ),
           ),
         )
-        console.log('promises', promises)
 
         Promise.all(promises)
           .then((results) => Promise.all(results.map((r) => r.json())))
-          .then((test) => {
-            console.log('prmise all result', test)
-            updateSearchResults(test)
+          .then((response) => {
+            updateSearchResults(response)
           })
       })
   }

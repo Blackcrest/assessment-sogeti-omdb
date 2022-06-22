@@ -1,11 +1,9 @@
 import { MovieDetail } from "../../models/movieDetail"
 
 export type GlobalState = {
-  searchQuery: string
-  searchFilms: MovieDetail[]
+  searchedMovies: MovieDetail[]
 }
 
 export const initialState: GlobalState = {
-  searchQuery: '',
-  searchFilms: [],
+  searchedMovies: [],
 }

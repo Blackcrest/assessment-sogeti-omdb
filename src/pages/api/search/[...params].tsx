@@ -1,6 +1,5 @@
 import { NextApiHandler } from "next"
 
-import { MovieDetail } from "../../../models/movieDetail"
 import { SearchResult } from "../../../models/searchReponse"
 
 const directSearch: NextApiHandler = async (req, res) => {
