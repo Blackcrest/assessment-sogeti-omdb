@@ -1,0 +1,54 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+  color: $main-font-color;
+  font-family: $default-font;
+
+  @include respond(tab-land) {
+    font-size: 56.25%;
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%;
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
+}
+
+body {
+  background: $bg-dark;
+  color: $white;
+}
+
+// TODO: Look at the widths
+.container {
+  margin: auto;
+  width: 1200px;
+
+  @include respond(tab-land) {
+    width: 800px;
+  }
+
+  @include respond(tab-port) {
+    width: 600px;
+  }
+
+  @include respond(big-desktop) {
+    width: 80vw;
+  }
+}
+
+.content {
+  padding-top: $header-height;
+  padding-bottom: map-get($spacers, 6);
+}

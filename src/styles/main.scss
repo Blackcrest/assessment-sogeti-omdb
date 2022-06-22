@@ -1,0 +1,19 @@
+/* ABSTRACT FOLDER */
+//always set variables first
+@import 'abstract/variables';
+@import 'abstract/collections';
+@import 'abstract/mixins';
+
+/* BASE FOLDER */
+@import 'base/base';
+@import 'base/typography';
+
+/* COMPONENT FOLDER */
+@import 'components/badge';
+@import 'components/read-more';
+@import 'components/featured-film';
+@import 'components/header';
+
+/* PAGES FOLDER */
+@import 'pages/featured';
+@import 'pages/search-results';

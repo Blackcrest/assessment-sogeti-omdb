@@ -1,0 +1,105 @@
+$search-bar-height: 46px;
+
+.header {
+  padding: map-get($spacers, 3) 0;
+  background: $bg-light;
+  color: $white;
+  position: fixed;
+  width: 100vw;
+  z-index: 300;
+  height: $header-height;
+
+  form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 50px;
+    background: $white;
+    box-shadow: 0px 0px 1px $white;
+    width: 100%;
+    position: relative;
+    height: $search-bar-height;
+
+    input {
+      margin: 0 map-get($spacers, 3);
+
+      height: inherit;
+      border: none;
+      line-height: $search-bar-height;
+      height: $search-bar-height;
+      flex: 1;
+      font-size: map-get($font-sizes, 'lg');
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+  }
+
+  &__search-button {
+    padding: map-get($spacers, 2);
+    border-radius: 50px;
+    border: none;
+    font-size: map-get($font-sizes, 'lg');
+    font-weight: 600;
+    background-color: $primary-color;
+    color: $white;
+    height: $search-bar-height;
+    width: 100px;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: -1px;
+  }
+
+  &__plot-toggle {
+    width: 100%;
+    display: flex;
+    margin-top: $spacer;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: map-get($spacers, 3);
+
+    label {
+      margin-right: map-get($spacers, 2);
+      position: relative;
+      cursor: pointer;
+
+      &:before {
+        content: '';
+        height: 20px;
+        width: 20px;
+        background: $white;
+        position: absolute;
+        border: 1px solid $white;
+        border-radius: 4px;
+        right: calc(#{map-get($spacers, 1)} * -1 + -20px);
+      }
+    }
+
+    & input {
+      display: none;
+
+      &:checked + label::before {
+        background: $primary-color;
+      }
+
+      &:checked + label:after {
+        content: '';
+        position: absolute;
+        right: calc(#{map-get($spacers, 1)} * -1 + -15px);
+        top: 5px;
+        background: white;
+        border-radius: 2px;
+        height: 10px;
+        width: 10px;
+      }
+    }
+  }
+}

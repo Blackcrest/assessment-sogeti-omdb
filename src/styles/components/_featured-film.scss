@@ -1,0 +1,19 @@
+.featured-film {
+  &__image {
+    height: 40rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: map-get($spacers, 3);
+
+    img {
+      height: 100%;
+    }
+  }
+
+  &__awards {
+    color: gray;
+    font-size: map-get($font-sizes, sm);
+    margin-bottom: map-get($spacers, 3);
+  }
+}

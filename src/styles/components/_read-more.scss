@@ -1,0 +1,39 @@
+.read-more {
+  border: 1px solid $white;
+  padding: $spacer;
+  border-radius: 8px;
+  max-height: 600px;
+
+  &[data-has-button='true'] {
+    position: relative;
+  }
+
+  &[data-is-open='true'] {
+    padding-bottom: map-get($spacers, 2);
+  }
+
+  &--borderless {
+    border: none;
+    border-radius: 0;
+    padding: $spacer 0;
+
+    &[data-has-button='true'] {
+      border-bottom: 1px solid grey;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    bottom: calc(#{map-get($spacers, 2)} * -1);
+    left: 50%;
+    transform: translate(-50%);
+
+    background: $primary-color;
+    color: white;
+    font-size: map-get($font-sizes, sm);
+    padding: 0.4rem $spacer;
+    border-radius: 30px;
+    border: 1px solid $white;
+    cursor: pointer;
+  }
+}

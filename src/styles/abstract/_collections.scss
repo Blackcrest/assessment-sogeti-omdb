@@ -1,0 +1,55 @@
+$spacers: (
+  1: $spacer,
+  2: (
+    $spacer * 2,
+  ),
+  3: (
+    $spacer * 3,
+  ),
+  4: (
+    $spacer * 4,
+  ),
+  5: (
+    $spacer * 5,
+  ),
+  6: (
+    $spacer * 6,
+  ),
+  7: (
+    $spacer * 7,
+  ),
+  8: (
+    $spacer * 8,
+  ),
+  9: (
+    $spacer * 9,
+  ),
+  10: (
+    $spacer * 10,
+  ),
+);
+
+$header-font-sizes: (
+  1: 4.8rem,
+  2: 3.2rem,
+  3: 2.8rem,
+  4: 2.2rem,
+  5: 1.8rem,
+  6: 1.6rem,
+);
+
+$font-sizes: (
+  xs: (
+    $default-font-size - 0.4,
+  ),
+  sm: (
+    $default-font-size - 0.2,
+  ),
+  md: $default-font-size,
+  lg: (
+    $default-font-size + 0.2,
+  ),
+  xl: (
+    $default-font-size + 0.4,
+  ),
+);

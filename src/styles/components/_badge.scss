@@ -1,0 +1,8 @@
+.badge {
+  background: white;
+  color: $black;
+  padding: 0.4rem $spacer;
+  border-radius: 30px;
+  font-size: map-get($font-sizes, 'sm');
+  line-height: map-get($font-sizes, 'sm');
+}

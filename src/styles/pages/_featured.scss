@@ -1,0 +1,6 @@
+.featured {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: map-get($spacers, 4);
+  margin-top: map-get($spacers, 5);
+}

@@ -1,0 +1,37 @@
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: $default-font-size;
+  line-height: 1.7;
+}
+
+.heading {
+  font-weight: 600;
+  font-size: map-get($header-font-sizes, 6);
+  line-height: map-get($header-font-sizes, 6);
+
+  &[data-size='l'] {
+    font-size: map-get($header-font-sizes, 5);
+    line-height: map-get($header-font-sizes, 5);
+  }
+
+  &[data-size='xl'] {
+    font-size: map-get($header-font-sizes, 4);
+    line-height: map-get($header-font-sizes, 4);
+  }
+
+  &[data-size='xxl'] {
+    font-size: map-get($header-font-sizes, 3);
+    line-height: map-get($header-font-sizes, 3);
+  }
+
+  &[data-size='xxxl'] {
+    font-size: map-get($header-font-sizes, 2);
+    line-height: map-get($header-font-sizes, 2);
+  }
+
+  &[data-size='xxxxl'] {
+    font-size: map-get($header-font-sizes, 1);
+    line-height: map-get($header-font-sizes, 1);
+  }
+}
